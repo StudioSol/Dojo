@@ -11,8 +11,8 @@ func QuebraLinha(texto string, tamanho int) string{
         return texto
     }
 
-    linhas := ""
     cp := ""
+    linhas := ""
     tamAtual := 0
     palavras := strings.Split(texto, " ")
 
@@ -22,6 +22,7 @@ func QuebraLinha(texto string, tamanho int) string{
             linhas += "\n"
             linhas += palavra
             tamAtual = 0
+            cp = ""
         } else {
             linhas += cp
             linhas += palavra
@@ -36,8 +37,6 @@ func QuebraLinha(texto string, tamanho int) string{
 func main() {
     flag.Parse()
     arquivo := flag.Args()[0]
-
     conteudo, _ := ioutil.ReadFile(arquivo)
-
     println(QuebraLinha(string(conteudo), 12))
 }
